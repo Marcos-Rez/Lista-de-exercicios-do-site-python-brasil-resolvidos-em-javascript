@@ -1,6 +1,6 @@
 /*
     Exercícios Com Listas 
-    Exercício 01
+    Exercício 01 a 05
     https://wiki.python.org.br/ExerciciosListas
 
 */
