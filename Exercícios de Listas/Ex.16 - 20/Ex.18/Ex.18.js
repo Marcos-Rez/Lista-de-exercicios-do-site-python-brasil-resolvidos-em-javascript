@@ -124,24 +124,29 @@ function arrDeVotosComputador(){
 
 
 function arrResultado(){
-    let acc = 0;
     let arrVotos = [];
     arrVotos = arrDeVotosComputador();
     arrIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
     arr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
+    var saida = [];
+    let porc = 0;
 
     for (let i = 0; i < arrVotos.length; i++) {
         for (let c = 0; c < arrIndex.length; c++) {
            if( arrVotos[i] == arrIndex[c]){
-            alert(arr[c])
+            
             arr[c] += 1;
-            alert(arr[c]) 
            }   
         }
     }
 
-   alert(arr)
+    saida.push(`Foram computados: ${arrVotos.length} votos.\n`);
+
+    for(let s = 0; s < arrIndex.length; s++){
+        porc = ((arr[s] * 100) / 23);
+        saida.push((`\nNúmero do jogador\t\tVotos\t\t%\n\t${s+1}\t\t\t\t\t\t${arr[s]}\t\t${porc.toFixed(2)}%`));
+    }
+    alert(saida)
 
 }
 arrResultado();
