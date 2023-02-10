@@ -22,7 +22,7 @@
 */
 
 function salariosContados (){
-    var listaDeSalarios = [300.95, 450.89, 789.51, 220, 200, 599.7, 200, 1000.78, 850.50, 500, 700, 260, 1500, 611, 900, 910, 50, 25, 60];
+    var listaDeSalarios = [300.95, 450.89, 789.51, 5520, 200, 599.7, 2000, 1000.78, 850.50, 500, 3000, 8500, 1500, 6110, 9000, 910, 7000, 2500, 1060];
     var listaDeParametros = [[200, 299], [300, 399], [400, 499], [500, 599], [600, 699], [700, 799], [800, 899], [900, 999], [1000]];
    
     var faixa200_299 = 0
@@ -37,7 +37,7 @@ function salariosContados (){
     
     for(let s of listaDeSalarios){
         var salario = 0;
-        salario += (s + (s * 0.09)) + 200;
+        salario += ((s * 0.09) + 200);
         //console.log("salario: "+salario)
         for(let p in listaDeParametros){
             if((salario >= listaDeParametros[p][0]) && (salario <= listaDeParametros[p][1])){
@@ -55,6 +55,6 @@ function salariosContados (){
         }
     }
     console.log("Faixa de salários\n[200, 299]: "+faixa200_299+"\n[300, 399]: "+faixa300_399 +"\n[400, 499]: "+faixa400_499+"\n[500, 599]: "+faixa500_599 + "\n[600, 699]: "+faixa600_699 +"\n[700, 799]: "+ faixa700_799 +"\n[800, 899]: "+faixa800_899 +"\n[900, 999]: "+faixa900_999 +"\n[1000 em diante]: "+faixa1000)
-    alert("Faixa de salários\n[200, 299]: "+faixa200_299+"\n[300, 399]: "+faixa300_399 +"\n[400, 499]: "+faixa400_499+"\n[500, 599]: "+faixa500_599 + "\n[600, 699]: "+faixa600_699 +"\n[700, 799]: "+ faixa700_799 +"\n[800, 899]: "+faixa800_899 +"\n[900, 999]: "+faixa900_999 +"\n[1000 em diante]: "+faixa1000)
+   /* alert("Faixa de salários\n[200, 299]: "+faixa200_299+"\n[300, 399]: "+faixa300_399 +"\n[400, 499]: "+faixa400_499+"\n[500, 599]: "+faixa500_599 + "\n[600, 699]: "+faixa600_699 +"\n[700, 799]: "+ faixa700_799 +"\n[800, 899]: "+faixa800_899 +"\n[900, 999]: "+faixa900_999 +"\n[1000 em diante]: "+faixa1000)*/
 }
 salariosContados();
