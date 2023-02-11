@@ -4,7 +4,6 @@
     https://wiki.python.org.br/ExerciciosListas
 */
 
-
 /*As Organizações Tabajara resolveram dar um abono aos seus colaboradores em reconhecimento ao bom resultado alcançado durante o ano que passou. Para isto contratou você para desenvolver a aplicação que servirá como uma projeção de quanto será gasto com o pagamento deste abono.
 
     Após reuniões envolvendo a diretoria executiva, a diretoria financeira e os representantes do sindicato laboral, chegou-se a seguinte forma de cálculo: 
@@ -38,3 +37,61 @@ Total gasto com abonos: R$ 1400.00
 Valor mínimo pago a 3 colaboradores
 Maior valor de abono pago: R$ 900.00
 */
+
+function entradaDeDados(){
+    let salario;
+    let arrSalarios = [];
+    while(salario != 0){
+        salario = parseFloat(prompt('Informe o salário ou [0 - para encerrar]: '));
+        while(salario < 0 || isNaN(salario)){
+            salario = parseFloat(prompt('Informe o salário ou [0 - para encerrar]: '));
+        }
+        arrSalarios.push(salario);
+
+    }
+    return arrSalarios;
+}
+
+function calculoDeAbono(){
+    let arrSaida = [];
+    let arrSalarios = entradaDeDados();
+
+    let arrAbonos = arrSalarios.map((salario)=>{
+        abono =  (salario * 0.2);
+ 
+        if(abono < 100) return 100;
+        return abono;
+    }) 
+    arrAbonos[(arrAbonos.length) - 1] = 0;
+    
+    let total = arrAbonos.reduce((acc, current)=>{
+        return acc + current;
+    },0)
+
+    let valorMaximo = 0;
+    let accMin = 0;
+    arrAbonos.forEach(abono => {
+        if(abono > valorMaximo){
+            valorMaximo = abono;
+        }
+        if(abono == 100){
+            accMin++;
+        }
+    });
+
+    
+    arrSaida.push(` Projeção de Gastos com Abono\n============================ \n\n`);
+    arrSalarios.forEach(salario => {
+        arrSaida.push(`Salário: R$ ${salario}\n`);
+    })
+    for(let i in (arrSalarios)){
+        if(i < (arrSalarios-1)){
+            arrSaida.push(`\nR$ ${arrSalarios[i]} - R$ ${arrAbonos[i]}`);
+        }
+    }
+    arrSaida.push(`\nForam processados ${(arrSalarios.length)-1} colaboradores\nTotal gasto com abonos: R$ ${total}\nValor mínimo pago a ${accMin} colaboradores\nMaior valor de abono pago: R$ ${valorMaximo}`);
+
+    let imprimir = arrSaida.join(" - ");
+    alert(imprimir)
+}
+calculoDeAbono()
